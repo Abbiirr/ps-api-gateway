@@ -1,0 +1,45 @@
+spring:
+  data:
+    redis:
+      port: 26379
+      password:
+      sentinel:
+        master: mymaster
+        nodes: localhost
+  cache:
+    type: redis
+    redis:
+      cache-null-values: false
+      time-to-live: 300000
+  kafka:
+    bootstrap-servers: localhost:8097
+
+server:
+  port: 8080
+
+external:
+  product_service:
+    ip: http://localhost
+    port: 8082
+
+
+  order_service:
+    ip: http://localhost
+    port: 8083
+
+
+  payment_service:
+    ip: http://localhost
+    port: 8084
+
+endpoint:
+  product: /product
+  order: /order
+  payment: /payment
+  create: /create
+  get:
+    all: /all
+  add: /add
+  deduct: /deduct
+  debit: /debit
+  credit: /credit

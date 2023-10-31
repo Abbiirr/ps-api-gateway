@@ -1,1 +1,1 @@
-# ps-api-gateway
+# ps-product-service
