@@ -27,6 +27,6 @@ public class PaymentEventService {
     }
 
     public String pay(PaymentRequestDTO requestDTO) {
-        return kafkaMessager.sendMessage(KafkaTopics.ORDER_PAYMENT_REQUEST.getTopicName(), requestDTO);
+        return kafkaMessager.sendMessage(KafkaTopics.PAYMENT_REQUEST.getTopicName(), requestDTO);
     }
 }

@@ -2,6 +2,7 @@ package com.example.api_gateway.enums;
 
 
 public enum KafkaTopics {
+    PAYMENT_REQUEST("payment_request"),
     CHECK_USER_STATUS("check_user_status"),
     CHECKOUT_TOPIC("checkout_topic"),
     CREATE_ORDER("create_order"),
