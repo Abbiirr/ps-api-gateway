@@ -7,36 +7,36 @@ import org.springframework.stereotype.Component;
 public class PaymentAPIEndpoints {
 
     @Value("${external.payment_service.ip}")
-    private static String paymentServiceIp;
+    private  String paymentServiceIp;
 
     @Value("${external.payment_service.port}")
-    private static String paymentServicePort;
+    private  String paymentServicePort;
 
     @Value("${endpoint.payment}")
-    private static String paymentEndpoint;
+    private  String paymentEndpoint;
 
     @Value("${endpoint.debit}")
-    private static String debitPaymentEndpoint;
+    private  String debitPaymentEndpoint;
 
     @Value("${endpoint.credit}")
-    private static String creditPaymentEndpoint;
+    private  String creditPaymentEndpoint;
 
     @Value("${endpoint.get.all}")
-    private static String getAllEndpoint;
+    private  String getAllEndpoint;
 
-    private static String getPaymentUrl() {
-        return "http://" + paymentServiceIp + ":" + paymentServicePort + paymentEndpoint;
+    private  String getPaymentUrl() {
+        return paymentServiceIp + ":" + paymentServicePort + paymentEndpoint;
     }
 
-    public static String getDebitPaymentUrl() {
+    public  String getDebitPaymentUrl() {
         return getPaymentUrl() + debitPaymentEndpoint;
     }
 
-    public static String getCreditPaymentUrl() {
+    public  String getCreditPaymentUrl() {
         return getPaymentUrl() + creditPaymentEndpoint;
     }
 
-    public static String getGetAllPaymentsUrl() {
+    public  String getGetAllPaymentsUrl() {
         return getPaymentUrl() + getAllEndpoint;
     }
 }
