@@ -25,12 +25,12 @@ external:
 
   order_service:
     ip: http://localhost
-    port: 8483
+    port: 8683
 
 
   payment_service:
     ip: http://localhost
-    port: 8484
+    port: 8684
 
 endpoint:
   product: /product
