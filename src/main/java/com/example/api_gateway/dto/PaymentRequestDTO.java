@@ -14,7 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class PaymentRequestDTO {
 
-    private UUID orderId;
+    private String eventId;
     private String userId;
-
+    private Double amount;
 }

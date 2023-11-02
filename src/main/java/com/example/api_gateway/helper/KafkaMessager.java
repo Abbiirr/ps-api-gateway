@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class KafkaMessager {
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    private  final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     public KafkaMessager(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
@@ -24,15 +24,23 @@ public class KafkaMessager {
         return objectMapper.writeValueAsString(requestDTO);
     }
 
-    public  String sendMessage(String topic,Object requestDTO) {
+    public String sendMessage(String topic, Object requestDTO) {
         String message;
-        try {
-            message = KafkaMessager.formatCheckoutRequest(requestDTO);
-        } catch (JsonProcessingException e) {
-            String errorMessage = "Failed to format the message due to: " + e.getMessage();
-            System.out.println(errorMessage);
-            return errorMessage;
+
+        if (requestDTO instanceof String) {
+            // If requestDTO is already a JSON string, use it as is
+            message = (String) requestDTO;
+        } else {
+            try {
+                // If requestDTO is not a JSON string, format it as JSON
+                message = new ObjectMapper().writeValueAsString(requestDTO);
+            } catch (JsonProcessingException e) {
+                String errorMessage = "Failed to format the message due to: " + e.getMessage();
+                System.out.println(errorMessage);
+                return errorMessage;
+            }
         }
+
         AtomicReference<String> responseMessage = new AtomicReference<>("Message Sent");
         CompletableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, message);
         future.whenComplete((result, ex) -> {
@@ -49,5 +57,6 @@ public class KafkaMessager {
 
         return responseMessage.get(); // Message sent successfully
     }
+
 }
 

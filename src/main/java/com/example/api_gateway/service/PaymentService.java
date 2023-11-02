@@ -1,10 +1,7 @@
 package com.example.api_gateway.service;
 
 import com.example.api_gateway.constants.PaymentAPIEndpoints;
-import com.example.api_gateway.constants.ProductAPIEndpoints;
-import com.example.api_gateway.dto.OrderRequestDTO;
 import com.example.api_gateway.dto.PaymentRequestDTO;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,28 +17,31 @@ public class PaymentService {
 
     private HttpHeaders headers;
 
+    private final PaymentAPIEndpoints paymentAPIEndpoints;
 
-    public PaymentService(RestTemplate restTemplate) {
+
+    public PaymentService(RestTemplate restTemplate, PaymentAPIEndpoints paymentAPIEndpoints, PaymentAPIEndpoints paymentAPIEndpoints1) {
         this.restTemplate = restTemplate;
+        this.paymentAPIEndpoints = paymentAPIEndpoints1;
         headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
     }
 
     public String getAllUsers() {
-        String response = restTemplate.exchange(PaymentAPIEndpoints.getGetAllPaymentsUrl(), HttpMethod.GET,
+        String response = restTemplate.exchange(paymentAPIEndpoints.getGetAllPaymentsUrl(), HttpMethod.GET,
                 new HttpEntity<>(headers), String.class).getBody();
         return response;
     }
 
     public String debit(PaymentRequestDTO requestDTO) {
-        String response = restTemplate.exchange(PaymentAPIEndpoints.getDebitPaymentUrl(), HttpMethod.POST,
+        String response = restTemplate.exchange(paymentAPIEndpoints.getDebitPaymentUrl(), HttpMethod.POST,
                 new HttpEntity<>(requestDTO, headers), String.class).getBody();
         return response;
     }
 
     public String credit(PaymentRequestDTO requestDTO) {
-        String response = restTemplate.exchange(PaymentAPIEndpoints.getCreditPaymentUrl(), HttpMethod.POST,
+        String response = restTemplate.exchange(paymentAPIEndpoints.getCreditPaymentUrl(), HttpMethod.POST,
                 new HttpEntity<>(requestDTO, headers), String.class).getBody();
         return response;
     }

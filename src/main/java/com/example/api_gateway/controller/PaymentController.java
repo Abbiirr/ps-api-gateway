@@ -13,13 +13,14 @@ public class PaymentController {
     private final PaymentService service;
     private final PaymentEventService eventService;
 
+
     public PaymentController(PaymentService service, PaymentEventService eventService) {
         this.service = service;
         this.eventService = eventService;
     }
 
 
-    @GetMapping("")
+    @GetMapping("/all")
     public String getAllProducts() {
         return this.service.getAllUsers();
     }

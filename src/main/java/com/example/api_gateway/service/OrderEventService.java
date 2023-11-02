@@ -15,15 +15,15 @@ public class OrderEventService {
         this.kafkaMessager = kafkaMessager;
     }
 
-    public String createOrder(OrderRequestDTO requestDTO) {
-        return kafkaMessager.sendMessage(KafkaTopics.CREATE_ORDER.getTopicName(), requestDTO);
-    }
-
-    public String createPaymentRequest(PaymentRequestDTO requestDTO) {
-        return kafkaMessager.sendMessage(KafkaTopics.ORDER_PAYMENT_REQUEST.getTopicName(), requestDTO);
-    }
-
-    public String getAll() {
-        return kafkaMessager.sendMessage(KafkaTopics.GET_ALL_ORDERS.getTopicName(), "");
-    }
+//    public String createOrder(OrderRequestDTO requestDTO) {
+//        return kafkaMessager.sendMessage(KafkaTopics.CREATE_ORDER.getTopicName(), requestDTO);
+//    }
+//
+//    public String createPaymentRequest(PaymentRequestDTO requestDTO) {
+//        return kafkaMessager.sendMessage(KafkaTopics.ORDER_PAYMENT_REQUEST.getTopicName(), requestDTO);
+//    }
+//
+//    public String getAll() {
+//        return kafkaMessager.sendMessage(KafkaTopics.GET_ALL_ORDERS.getTopicName(), "");
+//    }
 }
