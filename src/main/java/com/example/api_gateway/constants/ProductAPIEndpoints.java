@@ -8,36 +8,36 @@ import org.springframework.stereotype.Component;
 public class ProductAPIEndpoints {
 
     @Value("${external.product_service.ip}")
-    private static String productServiceIp;
+    private String productServiceIp;
 
     @Value("${external.product_service.port}")
-    private static String productServicePort;
+    private String productServicePort;
 
     @Value("${endpoint.product}")
-    private static String productEndpoint;
+    private String productEndpoint;
 
     @Value("${endpoint.add}")
-    private static String addProductEndpoint;
+    private String addProductEndpoint;
 
     @Value("${endpoint.deduct}")
-    private static String deductProductEndpoint;
+    private String deductProductEndpoint;
 
     @Value("${endpoint.get.all}")
-    private static String getAllEndpoint;
+    private String getAllEndpoint;
 
-    private static String getProductUrl() {
-        return "http://" + productServiceIp + ":" + productServicePort + productEndpoint;
+    private String getProductUrl() {
+        return productServiceIp + ":" + productServicePort + productEndpoint;
     }
 
-    public static String getAddProductUrl() {
+    public String getAddProductUrl() {
         return getProductUrl() + addProductEndpoint;
     }
 
-    public static String getDeductProductUrl() {
+    public String getDeductProductUrl() {
         return getProductUrl() + deductProductEndpoint;
     }
 
-    public static String getGetAllProductsUrl() {
+    public String getGetAllProductsUrl() {
         return getProductUrl() + getAllEndpoint;
     }
 }

@@ -12,20 +12,20 @@ spring:
       cache-null-values: false
       time-to-live: 300000
   kafka:
-    bootstrap-servers: localhost:8497
+    bootstrap-servers: localhost:8697
 
 server:
-  port: 8480
+  port: 8680
 
 external:
   product_service:
     ip: http://localhost
-    port: 8082
+    port: 8682
 
 
   order_service:
     ip: http://localhost
-    port: 8083
+    port: 8483
 
 
   payment_service:

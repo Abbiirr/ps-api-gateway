@@ -14,11 +14,10 @@ import java.util.UUID;
 @NoArgsConstructor
 public class OrderRequestDTO {
 
-    private UUID orderId;
     private String userId;
 
     //<productId, quantity>
     private HashMap<String, Integer> products;
-    private Double totalPrice;
+//    private Double totalPrice;
 
 }

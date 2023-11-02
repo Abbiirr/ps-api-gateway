@@ -16,5 +16,5 @@ public class PaymentRequestDTO {
 
     private String eventId;
     private String userId;
-    private Double amount;
+    private String orderId;
 }

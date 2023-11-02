@@ -7,29 +7,29 @@ import org.springframework.stereotype.Component;
 public class OrderAPIEndpoints {
 
     @Value("${external.order_service.ip}")
-    private static String orderServiceIp;
+    private String orderServiceIp;
 
     @Value("${external.order_service.port}")
-    private static String orderServicePort;
+    private String orderServicePort;
 
     @Value("${endpoint.order}")
-    private static String orderEndpoint;
+    private String orderEndpoint;
 
     @Value("${endpoint.create}")
-    private static String createEndpoint;
+    private String createEndpoint;
 
     @Value("${endpoint.get.all}")
-    private static String getAllEndpoint;
+    private String getAllEndpoint;
 
-    private static String getOrderUrl() {
-        return "http://" + orderServiceIp + ":" + orderServicePort + orderEndpoint;
+    private String getOrderUrl() {
+        return orderServiceIp + ":" + orderServicePort + orderEndpoint;
     }
 
-    public static String getCreateOrderUrl() {
+    public String getCreateOrderUrl() {
         return getOrderUrl() + createEndpoint;
     }
 
-    public static String getGetAllOrdersUrl() {
+    public String getGetAllOrdersUrl() {
         return getOrderUrl() + getAllEndpoint;
     }
 }
